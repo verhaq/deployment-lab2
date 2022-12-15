@@ -50,7 +50,7 @@ function submitHandler(evt) {
 
 // get student list on initial load
 axios
-    .get(`${baseURL}/api/students`)
+    .get(`/api/students`)
     .then(res => {
         putTheThingInTheView(res)
     })
