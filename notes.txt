@@ -1,0 +1,81 @@
+------------------------------
+AWS Instance commands/order
+
+sudo su = sudo super user (don't have to write sudo in front of everything everytime)
+
+apt update = apt is a package handler
+
+apt upgrade, press y, then press enter at the pink screen if it appears
+
+apt install nodejs - y then press enter at the pink screen if it appears
+
+apt install npm -y
+
+npm i -g n
+
+n stable (downloads most stable version of node)
+
+npm i -g npm (npm using npm), may need to reconnect to the instance (do the sudo su command before doing 'npm i -g npm' again)
+
+npm i -g nodemon
+
+Then, we will create a key and put key on github
+
+npm i -g pm2
+
+ssh-keygen -t rsa
+
+Then press enter until image shows up (don't enter file or passphrase)
+
+cd ~
+
+ls -a
+
+cd .ssh
+
+ls
+
+cat id_rsa.pub
+
+copy the key
+
+go to github, go to settings, press ssh and gpg keys, press new ssh key, name your key, paste the key in 'Key' space, and press Add SSH key
+
+Your key should now be added
+
+go to repository, click on green code button, click on ssh, copy the ssh, go back to the instance (if this does not work, click on the repository settings, click on deploy keys, and add your key before going back to the instance) 
+
+cd ~
+
+git clone [the ssh we just copied from github]
+
+Enter 'yes' when asked 'are you sure you want to continue connecting'
+
+ls
+
+cd into the project folder
+
+npm i
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 4000
+
+nodemon [relative link to server file] [for this one: server/server.js]
+
+open another tab, click on instances, click on the instance you want, click on open address, remove the 's' from https in the address bar
+
+Your website should be up!
+
+go back to instance connection, stop server
+
+pm2 start server/server.js --name d-demo
+
+When you make changes:
+push changes
+
+go to instance
+
+git pull origin main
+
+npm i (everytime) (you may have added something new)
+
+pm2 restart d-demo
